@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
 
@@ -61,11 +61,21 @@ export default function App() {
   }, [sound]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.gridContainer}>
-
+    <SafeAreaView style={styles.container}>
+      <View style={styles.screenView}>
+        <View style={styles.gridContainer}>
+          <Image style={styles.logo} source={require('./src/assets/logo.png')} />
+          <View style={styles.rowContainer}>
+            <TouchableOpacity
+              style={{...styles.item, backgroundColor:backgroundColourList[1]}}
+              onPress={() => playSound('one')}
+              >
+                <Text style={styles.itemText}>1</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -76,8 +86,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  screenView: {
+    marginTop: 16,
+    flex: 1,
+  },
   gridContainer: {
     flex: 1,
     margin: 8,
+  },
+  logo: {
+    alignSelf: 'center',
+  },
+  rowContainer: {
+    flexDirection: 'row',
+  },
+  item: {
+    flex: 1,
+    height: 110,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 2,
+  },
+  itemText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });
