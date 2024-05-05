@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
 
@@ -11,8 +11,8 @@ const backgroundColourList = {
   6: '#dc143c',
   7: '#ff4500',
   8: '#ffd700',
-  9: '#adff2f',
-  10: '#6b8e23',
+  9: '#9acd32',
+  10: '#228b22',
 };
 
 type SoundAsset = any;
@@ -61,83 +61,85 @@ export default function App() {
   }, [sound]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.screenView}>
-        <View style={styles.gridContainer}>
-          <Image style={styles.logo} source={require('./src/assets/logo.png')} />
-          <View style={styles.rowContainer}>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[1]}}
-              onPress={() => playSound('one')}
-              >
-                <Text style={styles.itemText}>One</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[2]}}
-              onPress={() => playSound('two')}
-              >
-                <Text style={styles.itemText}>Two</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.rowContainer}>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[3]}}
-              onPress={() => playSound('three')}
-              >
-                <Text style={styles.itemText}>Three</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[4]}}
-              onPress={() => playSound('four')}
-              >
-                <Text style={styles.itemText}>Four</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.rowContainer}>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[5]}}
-              onPress={() => playSound('five')}
-              >
-                <Text style={styles.itemText}>Five</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[6]}}
-              onPress={() => playSound('six')}
-              >
-                <Text style={styles.itemText}>Six</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.rowContainer}>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[7]}}
-              onPress={() => playSound('seven')}
-              >
-                <Text style={styles.itemText}>Seven</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[8]}}
-              onPress={() => playSound('eight')}
-              >
-                <Text style={styles.itemText}>Eight</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.rowContainer}>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[9]}}
-              onPress={() => playSound('nine')}
-              >
-                <Text style={styles.itemText}>Nine</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{...styles.item, backgroundColor:backgroundColourList[10]}}
-              onPress={() => playSound('ten')}
-              >
-                <Text style={styles.itemText}>Ten</Text>
-            </TouchableOpacity>
+    <ScrollView style={styles.container}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.screenView}>
+          <View style={styles.gridContainer}>
+            <Image style={styles.logo} source={require('./src/assets/logo.png')} />
+            <View style={styles.rowContainer}>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[1]}}
+                onPress={() => playSound('one')}
+                >
+                  <Text style={styles.itemText}>One</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[2]}}
+                onPress={() => playSound('two')}
+                >
+                  <Text style={styles.itemText}>Two</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.rowContainer}>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[3]}}
+                onPress={() => playSound('three')}
+                >
+                  <Text style={styles.itemText}>Three</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[4]}}
+                onPress={() => playSound('four')}
+                >
+                  <Text style={styles.itemText}>Four</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.rowContainer}>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[5]}}
+                onPress={() => playSound('five')}
+                >
+                  <Text style={styles.itemText}>Five</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[6]}}
+                onPress={() => playSound('six')}
+                >
+                  <Text style={styles.itemText}>Six</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.rowContainer}>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[7]}}
+                onPress={() => playSound('seven')}
+                >
+                  <Text style={styles.itemText}>Seven</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[8]}}
+                onPress={() => playSound('eight')}
+                >
+                  <Text style={styles.itemText}>Eight</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.rowContainer}>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[9]}}
+                onPress={() => playSound('nine')}
+                >
+                  <Text style={styles.itemText}>Nine</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{...styles.item, backgroundColor:backgroundColourList[10]}}
+                onPress={() => playSound('ten')}
+                >
+                  <Text style={styles.itemText}>Ten</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
