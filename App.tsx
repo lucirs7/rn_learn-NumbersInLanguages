@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { Audio } from 'expo-av';
+import { useEffect, useState } from 'react';
 
 const backgroundColourList = {
   1: '#008b8b',
@@ -30,27 +31,40 @@ const soundList: {[key: string]: SoundAsset} = {
 };
 
 export default function App() {
+  const [sound, setSound] = useState<Audio.Sound>();
+
   const playSound = async (number: string) => {
     const soundObj = new Audio.Sound();
 
     try {
       let path = soundList[number];
       await soundObj.loadAsync(path);
-      await soundObj.playAsync().then(async playbackStatus => {
-        setTimeout(() => {
+      setSound(soundObj);
+      await soundObj.playAsync();/*.then(async playbackStatus => {
+        if (playbackStatus.isLoaded) {
           soundObj.unloadAsync();
-        }, 3);
+        }
       }).catch(error => {
         console.error('An error occurred during unloading sound: ', error);
-      });
+      });*/
     } catch (error) {
       console.error('An error occurred while playing the sound: ', error);
     }
   };
 
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   return (
     <View style={styles.container}>
-      <Text>Numbers pronunciation!</Text>
+      <View style={styles.gridContainer}>
+
+      </View>
     </View>
   );
 }
@@ -61,5 +75,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  gridContainer: {
+    flex: 1,
+    margin: 8,
   },
 });
